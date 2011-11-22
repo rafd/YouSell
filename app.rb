@@ -11,10 +11,6 @@ class App < Sinatra::Base
     alias_method :h, :escape_html
   end
 
-  def current_user
-    
-  end
-
   get '/' do
     cookie = request.cookies["user"]
     @user= $USERS[cookie] if(cookie and cookie.length > 0)
