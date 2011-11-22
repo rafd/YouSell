@@ -6,6 +6,11 @@ class App < Sinatra::Base
   $USERS = {"a" => {:name=>"a",:pass=>"a",:balance => 50},"b" => {:name=>"b",:pass=>"b",:balance => 50}}
   $PRODUCTS = [{:name => "Brie Cheese", :description=>"Very Smelly", :price => 10, :owner => "a"},{:name => "Cheddar Cheese", :description=>"Not So Smelly", :price => 5, :owner => "b"}]
 
+  helpers do
+    include Rack::Utils
+    alias_method :h, :escape_html
+  end
+
   def current_user
     
   end

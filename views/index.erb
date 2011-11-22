@@ -12,8 +12,8 @@
 
     <% if @user %>
     <div id="user">
-      <span class="name"><%= @user[:name] %></span>
-      <span class="balance">$<%= @user[:balance] %></span>
+      <span class="name"><%= h @user[:name] %></span>
+      <span class="balance">$<%= h @user[:balance] %></span>
     </div>
     <% end %>
   </header>
@@ -27,7 +27,7 @@
           <input type="text" name="name" placeholder="Product Name"/><br />
           <input type="text" name="description" placeholder="Description"><br />
           <input type="text" name="price" placeholder="10"/><br />
-          <input type="hidden" name="owner" value="<%= @user[:name] %>" />
+          <input type="hidden" name="owner" value="<%= h @user[:name] %>" />
         </div>
         <button type="submit" name="submit" value="Sell" class="submit">Sell</button>
       </form>
@@ -47,14 +47,14 @@
     <% $PRODUCTS.each do |p| %>
       <div class="product">
         <form action="/buy" method="post" name="buy">
-          <input type="hidden" name="price" value="<%= p[:price] %>"/>
-          <input type="hidden" name="owner" value="<%= p[:owner] %>" />
+          <input type="hidden" name="price" value="<%= h p[:price] %>"/>
+          <input type="hidden" name="owner" value="<%= h p[:owner] %>" />
           <button type="submit" name="submit" value="Buy" class="submit">Buy</button>
         </form>
 
-        <div class="price">$<%= p[:price] %></div>
-        <div class="name"><%= p[:owner] %>'s <%= p[:name] %></div>
-        <div class="description"><%= p[:description] %></div>
+        <div class="price">$<%= h p[:price] %></div>
+        <div class="name"><%= h p[:owner] %>'s <%= h p[:name] %></div>
+        <div class="description"><%= h p[:description] %></div>
       </div>
     <% end %>
 
@@ -66,11 +66,11 @@
 
   <div id="debug" style="display:none">
     <h2>Users</h2>
-    <%= $USERS.inspect %>
+    <%= h $USERS.inspect %>
     <h2>User</h2>
-    <%= @user.inspect %>
+    <%= h @user.inspect %>
     <h2>Products</h2>
-    <%= $PRODUCTS.inspect %>
+    <%= h $PRODUCTS.inspect %>
   </div>
 
 </body>
