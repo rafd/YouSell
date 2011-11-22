@@ -3,22 +3,24 @@
   <meta charset="utf-8">
   <title>YouSell</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <header>
     <h1>YouSell</h1>
 
+    <% if @user %>
     <div id="user">
-      <span class="name">John</span>
-      <span class="balance">$50</span>
+      <span class="name"><%= @user[:name] %></span>
+      <span class="balance">$<%= @user[:balance] %></span>
     </div>
+    <% end %>
   </header>
 
   <div id="filler"></div>
 
   <div id="form">
-    <% if(@user) %>
+    <% if @user %>
       <form>
         <div class="wrap">
           <input type="text" name="name" placeholder="Product Name"/><br />
@@ -28,18 +30,23 @@
         <button type="button" name="submit" value="Sell" class="submit">Sell</button>
       </form>
     <% else %>
-      <form>
+      <form action="/login" method="post" name="login">
         <div class="wrap">
           <input type="text" name="name" placeholder="Name"/><br />
           <input type="password" name="password" placeholder="Password"><br />
         </div>
-        <button type="button" name="submit" value="Sell" class="submit">Go!</button>
+        <button type="submit" name="submit" value="Sell" class="submit">Go!</button>
       </form>
     <% end %>
   </div>
 
   <div id="list">
     
+  </div>
+
+  <div id="debug">
+    <%= $USERS.inspect %>
+    <%= @user.inspect %>
   </div>
 
 </body>

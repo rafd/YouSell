@@ -28,9 +28,9 @@ header #user {
   height: 100px;
 }
 
-#form {
+#form, #list, #debug {
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 1em;
   background: #fff;
 }
 #form form {
