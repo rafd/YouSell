@@ -6,10 +6,6 @@ class App < Sinatra::Base
   $USERS = {"a" => {:name=>"a",:pass=>"a",:balance => 50},"b" => {:name=>"b",:pass=>"b",:balance => 50}}
   $PRODUCTS = [{:name => "Brie Cheese", :description=>"Very Smelly", :price => 10, :owner => "a"},{:name => "Cheddar Cheese", :description=>"Not So Smelly", :price => 5, :owner => "b"}]
 
-  def current_user
-    
-  end
-
   get '/' do
     cookie = request.cookies["user"]
     @user= $USERS[cookie] if(cookie and cookie.length > 0)
