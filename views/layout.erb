@@ -1,0 +1,38 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>YouSell</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>YouSell</h1>
+
+    <div id="user">
+      <span class="name">John</span>
+      <span class="balance">$50</span>
+    </div>
+  </header>
+
+  <div id="filler"></div>
+
+  <div id="form">
+    <form>
+      <div class="wrap">
+        <input type="text" name="name" placeholder="Product Name"/><br />
+        <input type="text" name="description" placeholder="Description"><br />
+        <input type="text" name="name" placeholder="$10"/><br />
+      </div>
+      <button type="button" name="submit" value="Sell" class="submit">Sell</button>
+    </form>
+  </div>
+
+  <div id="list">
+    
+  </div>
+
+  <%= yield %>
+</body>
+</html>
+

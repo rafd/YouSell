@@ -1,0 +1,55 @@
+body {
+  background: #002240;
+  width: 800px;
+  margin: 0 auto;
+  font-size: 1.5em;
+  font-family: Helvetica, Arial;
+}
+
+header {
+  position: relative;
+}
+header h1,
+header #user {
+  background: #fff;
+  margin: 0;
+  padding: 0.25em;
+
+  font-size: 1em;
+
+  position: absolute;
+  top: 0;
+}
+header #user {
+  right: 0;
+}
+
+#filler {
+  height: 100px;
+}
+
+#form {
+  width: 80%;
+  margin: 0 auto;
+  background: #fff;
+}
+#form form {
+  padding: 1em;
+  overflow: hidden;
+}
+#form input {
+  font-size: 1.5em;
+  margin: 0.25em 0;
+  width: 100%;
+}
+
+#form .wrap {
+  width: 60%;
+  float: left;
+  margin-right: 1em;
+}
+#form form .submit {
+  font-size: 1.5em;
+  padding: 1em;
+  width: 30%;
+}
