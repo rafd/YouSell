@@ -53,3 +53,30 @@ header #user {
   padding: 1em;
   width: 30%;
 }
+#list {
+  padding: 0.5em 0;
+}
+
+.product {
+  clear: both;
+  overflow: hidden;
+  margin: 1em;
+}
+.product .price {
+  font-size: 2em;
+  padding: 0.1em;
+  float: left;
+  margin-right: 1em;
+  min-width: 2em;
+}
+.product .name {
+  font-weight: bold;
+  
+}
+.product .description {
+  
+}
+.product button {
+  font-size: 2em;
+  float: left;
+}

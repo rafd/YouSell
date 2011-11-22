@@ -21,13 +21,14 @@
 
   <div id="form">
     <% if @user %>
-      <form>
+      <form action="/sell" method="post" name="sell">
         <div class="wrap">
           <input type="text" name="name" placeholder="Product Name"/><br />
           <input type="text" name="description" placeholder="Description"><br />
-          <input type="text" name="name" placeholder="$10"/><br />
+          <input type="text" name="price" placeholder="10"/><br />
+          <input type="hidden" name="owner" value="<%= @user[:name] %>" />
         </div>
-        <button type="button" name="submit" value="Sell" class="submit">Sell</button>
+        <button type="submit" name="submit" value="Sell" class="submit">Sell</button>
       </form>
     <% else %>
       <form action="/login" method="post" name="login">
@@ -40,13 +41,35 @@
     <% end %>
   </div>
 
+  <% if @user %>
   <div id="list">
-    
-  </div>
+    <% $PRODUCTS.each do |p| %>
+      <div class="product">
+        <form action="/buy" method="post" name="buy">
+          <input type="hidden" name="price" value="<%= p[:price] %>"/>
+          <input type="hidden" name="owner" value="<%= p[:owner] %>" />
+          <button type="submit" name="submit" value="Buy" class="submit">Buy</button>
+        </form>
 
-  <div id="debug">
+        <div class="price">$<%= p[:price] %></div>
+        <div class="name"><%= p[:owner] %>'s <%= p[:name] %></div>
+        <div class="description"><%= p[:description] %></div>
+      </div>
+    <% end %>
+
+    <% if $PRODUCTS.length == 0 %>
+    Sorry, nothing for sale yet.
+    <% end %>
+  </div>
+  <% end %>
+
+  <div id="debug" style="display:none">
+    <h2>Users</h2>
     <%= $USERS.inspect %>
+    <h2>User</h2>
     <%= @user.inspect %>
+    <h2>Products</h2>
+    <%= $PRODUCTS.inspect %>
   </div>
 
 </body>

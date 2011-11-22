@@ -3,11 +3,16 @@ require 'sinatra'
 class App < Sinatra::Base
   set :root, File.dirname(__FILE__)
 
-  $USERS = {}
+  $USERS = {"a" => {:name=>"a",:pass=>"a",:balance => 50},"b" => {:name=>"b",:pass=>"b",:balance => 50}}
+  $PRODUCTS = [{:name => "Brie Cheese", :description=>"Very Smelly", :price => 10, :owner => "a"},{:name => "Cheddar Cheese", :description=>"Not So Smelly", :price => 5, :owner => "b"}]
+
+  def current_user
+    
+  end
 
   get '/' do
     cookie = request.cookies["user"]
-    @user = $USERS[cookie] if(cookie and cookie.length > 1)
+    @user= $USERS[cookie] if(cookie and cookie.length > 0)
 
     erb :index
   end
@@ -30,12 +35,27 @@ class App < Sinatra::Base
   end
 
 
-  post '/new' do
+  post '/sell' do
+    $PRODUCTS << {
+      :name => params["name"], 
+      :description => params["description"],
+      :price => Integer(params["price"]),
+      :owner => params["owner"]
+    }
 
+    redirect '/'
   end
 
 
   post '/buy' do
+    buyer = request.cookies["user"]
+    seller = params["owner"]
+    price = Integer(params["price"])
+    
+    $USERS[buyer][:balance] -= price
+    $USERS[seller][:balance] += price
+
+    redirect '/'
 
   end
 
